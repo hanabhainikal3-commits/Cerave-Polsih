@@ -169,6 +169,8 @@ function showThankYou(total){
    });
  }
  document.body.innerHTML=`<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f7fbfb;font-family:Arial,Helvetica,sans-serif;padding:20px"><div style="background:#fff;padding:42px 28px;border-radius:18px;box-shadow:0 10px 35px rgba(0,0,0,.10);text-align:center;max-width:450px;width:100%"><div style="font-size:52px;color:#10a99d">✓</div><div style="display:inline-block;background:#e8f8f4;color:#078b79;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:800;margin:10px 0">ORDER CONFIRMED</div><h1 style="color:#15385c;margin:12px 0">Thank You for Your Order!</h1><p style="color:#617080;line-height:1.6">Your Cash on Delivery order has been received successfully.</p><div style="text-align:left;background:#f7faf9;padding:16px;border-radius:10px;margin:20px 0;line-height:1.9"><b>Payment Method:</b> Cash on Delivery<br><b>Order Status:</b> Confirmed<br><b>Total:</b> Rs. ${total}</div><p style="color:#617080;font-size:13px">Our team will contact you shortly to confirm your order.</p><button onclick="location.reload()" style="margin-top:8px;border:0;background:#111;color:#fff;padding:13px 24px;border-radius:8px;font-weight:700;cursor:pointer">Continue Shopping</button></div></div>`;
+ try{ history.pushState({page:"thank-you"},"","/thank-you"); }catch(e){}
+
 }
 async function submitOrder(e){
  e.preventDefault();
