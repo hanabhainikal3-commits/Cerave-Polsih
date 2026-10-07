@@ -27,194 +27,13 @@ h1{font-size:34px;line-height:1.15;margin:8px 0 16px;color:#15385c}.price{displa
 .reviews{margin-top:45px;border-top:1px solid var(--line);padding-top:30px}.reviewgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{border:1px solid var(--line);padding:18px;border-radius:10px}.card .stars{font-size:14px}.verified{font-size:11px;color:#0a987f;font-weight:700}
 footer{margin-top:55px;background:#12283f;color:#fff;padding:45px 18px}.footerin{max-width:1180px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}.footerin h3{margin-top:0}.footerin p,.footerin a{color:#cbd8e2;font-size:14px;line-height:1.8}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:100}.modal.show{display:flex}.formbox{background:#fff;width:min(480px,92%);border-radius:14px;padding:25px;position:relative}.close{position:absolute;right:16px;top:12px;font-size:26px;cursor:pointer}.formbox h2{margin-top:0}.field{margin:11px 0}.field label{display:block;font-size:12px;font-weight:700;margin-bottom:5px}.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid #ccd6dc;border-radius:7px;font-size:14px}.submit{width:100%;background:#111;color:#fff;border:0;padding:14px;border-radius:7px;font-weight:800;cursor:pointer;margin-top:7px}
-
-/* PRO REVIEW SECTION */
-.reviews{
-  margin-top:52px;
-  border-top:1px solid #e9ecef;
-  padding:34px 0 20px;
-}
-.reviews h2{
-  margin:0 0 7px;
-  color:#17385d;
-  font-size:22px;
-  line-height:1.2;
-  font-weight:700;
-}
-.reviews > p{
-  margin:0 0 22px;
-  color:#687782;
-  font-size:12px;
-}
-.reviews > p:first-letter{color:#f4ad00}
-.reviewgrid{
-  display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:12px;
-  align-items:stretch;
-}
-.review-card{
-  min-width:0;
-  min-height:188px;
-  background:#f7fbfa;
-  border:1px solid #e4eeec;
-  border-radius:11px;
-  padding:15px 14px 14px;
-  box-shadow:0 3px 12px rgba(18,45,60,.06);
-  transition:transform .18s ease,box-shadow .18s ease;
-}
-.review-card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 7px 18px rgba(18,45,60,.10);
-}
-.review-card .review-stars{
-  color:#f2ae00;
-  font-size:11px;
-  letter-spacing:2px;
-  line-height:1;
-}
-.review-card .review-name{
-  margin-top:11px;
-  font-size:11px;
-  font-weight:700;
-  color:#17385d;
-  line-height:1.35;
-}
-.review-card .verified{
-  display:inline-block;
-  margin-left:4px;
-  padding:3px 6px;
-  border-radius:10px;
-  background:#dff4ef;
-  color:#168b78;
-  font-size:7px;
-  font-weight:700;
-  vertical-align:middle;
-}
-.review-card p{
-  margin:10px 0 0;
-  color:#50616a;
-  font-size:10px;
-  line-height:1.58;
-}
-.review-buttons{
-  text-align:center;
-  margin:19px 0 3px;
-}
-.review-buttons button{
-  min-width:96px;
-  border:1px solid #183b59;
-  background:#fff;
-  color:#183b59;
-  border-radius:18px;
-  padding:8px 14px;
-  font-size:9px;
-  font-weight:600;
-  cursor:pointer;
-  margin:0 3px;
-}
-.review-buttons .primary{
-  background:#183b59;
-  color:#fff;
-}
-@media(max-width:1000px){
-  .reviewgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
-@media(max-width:650px){
-  .reviewgrid{grid-template-columns:1fr}
-  .review-card{min-height:auto}
-}
-
 @media(max-width:800px){.navlinks{display:none}.product{grid-template-columns:1fr;gap:25px}.gallery{position:static}h1{font-size:28px}.reviewgrid{grid-template-columns:1fr}.footerin{grid-template-columns:1fr}.container{padding:18px 12px}.trust{grid-template-columns:1fr 1fr 1fr}}
-
-.delivery-note{background:#fafafa;border:1px solid #e5e5e5;border-radius:7px;padding:10px 12px;margin:10px 0 12px;font-size:12px;color:#555}
-.summary-row{display:flex;justify-content:space-between;padding:3px 0}
-.summary-total{display:flex;justify-content:space-between;border-top:1px solid #ddd;margin-top:7px;padding-top:8px;color:#111;font-size:14px}
-
-.processing-screen,.thankyou-screen{
-  position:fixed;inset:0;background:rgba(255,255,255,.98);
-  display:none;align-items:center;justify-content:center;
-  z-index:9999;text-align:center
-}
-.processing-screen.show,.thankyou-screen.show{display:flex}
-.processing-box,.thankyou-box{width:min(430px,90%);padding:35px 25px}
-.loader{
-  width:48px;height:48px;border:4px solid #e5e5e5;
-  border-top-color:#111;border-radius:50%;
-  animation:spin .8s linear infinite;margin:0 auto 22px
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-.processing-box h2{margin:0 0 8px;font-size:22px;color:#17385d}
-.processing-box p,.thankyou-box p{color:#666;font-size:13px;line-height:1.6}
-
-
-/* PROFESSIONAL THANK YOU PAGE */
-.thankyou-screen{
-  position:fixed;inset:0;background:rgba(248,250,251,.98);
-  display:none;align-items:center;justify-content:center;
-  z-index:9999;padding:24px;overflow:auto
-}
-.thankyou-screen.show{display:flex}
-.thankyou-card{
-  width:min(520px,100%);background:#fff;border:1px solid #e7ecef;
-  border-radius:18px;padding:36px 38px 30px;text-align:center;
-  box-shadow:0 18px 55px rgba(18,45,60,.12)
-}
-.ty-brand{font-size:18px;font-weight:800;letter-spacing:-.3px;color:#17385d;margin-bottom:22px}
-.ty-brand span{color:#08a4a4}
-.success-ring{
-  width:72px;height:72px;border-radius:50%;margin:0 auto 18px;
-  background:#eaf7f4;border:7px solid #f5fbfa;display:flex;
-  align-items:center;justify-content:center
-}
-.success-ring span{
-  width:48px;height:48px;border-radius:50%;background:#17385d;color:#fff;
-  display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700
-}
-.ty-badge{
-  display:inline-block;background:#e8f6f2;color:#168b78;border-radius:20px;
-  padding:6px 11px;font-size:9px;font-weight:800;letter-spacing:1px
-}
-.thankyou-card h1{
-  margin:14px 0 7px;color:#17385d;font-size:30px;line-height:1.18
-}
-.ty-lead{margin:0;color:#66747d;font-size:13px}
-.ty-order-box{
-  text-align:left;margin:24px 0 14px;background:#f8fafb;
-  border:1px solid #e8edef;border-radius:11px;padding:15px 17px
-}
-.ty-row{display:flex;justify-content:space-between;gap:20px;padding:5px 0;font-size:11px;color:#697780}
-.ty-row strong{color:#17385d}
-.ty-row .confirmed{color:#168b78}
-.ty-line{height:1px;background:#e1e7e9;margin:9px 0}
-.ty-order-box p{margin:0;color:#687780;font-size:10px;line-height:1.6}
-.ty-help{
-  display:flex;align-items:flex-start;text-align:left;gap:10px;
-  padding:12px 14px;background:#fff;border:1px solid #e8edef;border-radius:10px
-}
-.help-icon{
-  flex:0 0 24px;width:24px;height:24px;border-radius:50%;background:#17385d;
-  color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px
-}
-.ty-help strong,.ty-help span{display:block}
-.ty-help strong{font-size:10px;color:#17385d;margin-bottom:3px}
-.ty-help span{font-size:9px;color:#718089;line-height:1.4}
-.ty-home{
-  width:100%;height:44px;margin-top:19px;border:0;border-radius:6px;
-  background:#111;color:#fff;font-size:11px;font-weight:700;cursor:pointer
-}
-.ty-note{display:block;margin-top:13px;color:#9aa4aa;font-size:9px}
-@media(max-width:600px){
-  .thankyou-card{padding:28px 20px 24px;border-radius:14px}
-  .thankyou-card h1{font-size:25px}
-}
-
 </style>
 </head>
 <body>
 <div class="top">🔥 70% OFF — 10:10 SALE | Cash on Delivery Available Across Pakistan</div>
 <header><div class="nav">
-  <div class="logo">CeraVe</div>
+  <div class="logo">Trends<span>PK</span></div>
   <nav class="navlinks"><a href="#">Home</a><a href="#">Catalog</a><a href="#">Contact</a></nav>
   <div class="icons">Search &nbsp; ♡ &nbsp; 🛒</div>
 </div></header>
@@ -232,14 +51,20 @@ footer{margin-top:55px;background:#12283f;color:#fff;padding:45px 18px}.footerin
 
   <div>
     <div class="badge">LIMITED TIME OFFER</div>
-    <div class="stock">⌛ Hurry! Only <span id="stockNumber">20</span> items left in stock</div>
+    <div class="stock">⌛ Hurry! Only 5 items left in stock</div>
     <div class="stars">★★★★★</div>
     <div class="reviewline">Trustscore 4.9 | 1,500+ reviews</div>
     <h1>CeraVe Hydrating Skin Polish 70% Off 10:10 Sale</h1>
     <div class="price"><span class="sale">Rs. 1,000</span><span class="old">Rs. 4,599</span><span class="off">70% OFF</span></div>
 
-    <button type="button" class="orderbtn" onclick="openForm()">🛍 Order Now — Cash on Delivery</button>
-    <button type="button" class="cartbtn" onclick="add()">Add to Cart</button>
+    <div class="pack-title">SELECT PACK</div>
+    <div class="packs">
+      <button class="pack active">PACK OF 1</button>
+      <button class="pack">PACK OF 2<br><b>BEST SELLING</b></button>
+    </div>
+
+    <button class="orderbtn" onclick="openForm()">🛍 Order Now — Cash on Delivery</button>
+    <button class="cartbtn">Add to Cart</button>
 
     <div class="trust">
       <div>🛡️<br>100% Original Product</div>
@@ -275,219 +100,51 @@ footer{margin-top:55px;background:#12283f;color:#fff;padding:45px 18px}.footerin
 
 <section class="reviews">
   <h2>Customer Reviews</h2>
-  <p><span style="color:#f2ae00;letter-spacing:2px">★★★★★</span> &nbsp; <b>5.0</b> — 5 Reviews</p>
+  <p>★★★★★ <b>5.0</b> — 5 Reviews</p>
   <div class="reviewgrid">
-    <article class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-name">Ayesha Khan <span class="verified">Verified Buyer</span></div>
-      <p>Skin polish use karne ke baad meri skin kaafi soft aur smooth feel hoti hai. Texture bhi pehle se better laga.</p>
-    </article>
-    <article class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-name">Mahnoor Ahmed <span class="verified">Verified Buyer</span></div>
-      <p>Mujhe iska result bohat acha laga. Dead skin remove hone ke baad skin smooth aur hydrated feel hoti hai.</p>
-    </article>
-    <article class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-name">Hira Malik <span class="verified">Verified Buyer</span></div>
-      <p>Mujhe ye gentle laga. Use ke baad skin soft aur clean feel hui. Overall good experience.</p>
-    </article>
-    <article class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-name">Sana Raza <span class="verified">Verified Buyer</span></div>
-      <p>Packaging achi thi aur product use karna easy hai. Skin fresh aur smooth feel hui.</p>
-    </article>
-    <article class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-name">Fatima Noor <span class="verified">Verified Buyer</span></div>
-      <p>Overall mujhe skin polish pasand aya. Skin exfoliate bhi hoti hai aur dry feel nahi hoti.</p>
-    </article>
-  </div>
-  <div class="review-buttons">
-    <button class="primary">Read More Reviews</button>
-    <button>Write a Review</button>
+    <div class="card"><div class="stars">★★★★★</div><b>Ayesha Khan</b> <span class="verified">Verified Buyer</span><p>Skin polish use karne ke baad meri skin kaafi soft aur smooth feel hoti hai.</p></div>
+    <div class="card"><div class="stars">★★★★★</div><b>Mahnoor Ahmed</b> <span class="verified">Verified Buyer</span><p>Dead skin remove hone ke baad skin smooth aur hydrated feel hoti hai.</p></div>
+    <div class="card"><div class="stars">★★★★★</div><b>Hira Malik</b> <span class="verified">Verified Buyer</span><p>Mujhe ye gentle laga aur use ke baad skin soft aur clean feel hui.</p></div>
   </div>
 </section>
 </main>
 
 <footer><div class="footerin">
-  <div><h3>CeraVe</h3><p>Quality products at great prices. Cash on Delivery available across Pakistan.</p></div>
+  <div><h3>TrendsPK</h3><p>Quality products at great prices. Cash on Delivery available across Pakistan.</p></div>
   <div><h3>Quick Links</h3><p><a href="#">Home</a><br><a href="#">Catalog</a><br><a href="#">Contact</a></p></div>
   <div><h3>Customer Care</h3><p>7 Days Easy Return<br>Money Back Guarantee<br>Support Available</p></div>
 </div></footer>
 
-
-<div class="processing-screen" id="processingScreen">
-  <div class="processing-box">
-    <div class="loader"></div>
-    <h2>Processing Your Order...</h2>
-    <p>Please wait a moment.</p>
-  </div>
-</div>
-
-<div class="thankyou-screen" id="thankyouScreen">
-  <div class="thankyou-card">
-    <div class="ty-brand">CeraVe</div>
-    <div class="success-ring"><span>✓</span></div>
-    <div class="ty-badge">ORDER CONFIRMED</div>
-    <h1>Thank You for Your Order!</h1>
-    <p class="ty-lead">Your order has been successfully received.</p>
-
-    <div class="ty-order-box">
-      <div class="ty-row"><span>Payment Method</span><strong>Cash on Delivery</strong></div>
-      <div class="ty-row"><span>Order Status</span><strong class="confirmed">Confirmed</strong></div>
-      <div class="ty-line"></div>
-      <p>Our team will contact you shortly to confirm your order and delivery details.</p>
-    </div>
-
-    <div class="ty-help">
-      <div class="help-icon">✓</div>
-      <div>
-        <strong>What happens next?</strong>
-        <span>We’ll call you for confirmation before dispatch.</span>
-      </div>
-    </div>
-
-    <button type="button" class="ty-home" onclick="location.reload()">Continue Shopping</button>
-    <small class="ty-note">Thank you for shopping with CeraVe</small>
-  </div>
-</div>
-
 <div class="modal" id="modal">
-  <div class="formbox">
-    <span class="close" onclick="closeForm()">×</span>
-    <h2>Complete Your Order</h2>
-    <p>Cash on Delivery — Select your deal first.</p>
-
-    <form onsubmit="submitOrder(event)">
-      <div class="field">
-        <label>SELECT DEAL *</label>
-        <select id="deal" required>
-          <option value="">Select Deal</option>
-          <option value="Pack of 1 - Rs. 999">Pack of 1 — Rs. 999</option>
-          <option value="Pack of 2 - Rs. 1499">Pack of 2 — Rs. 1,499</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>NAME *</label>
-        <input id="orderName" required placeholder="Enter your name">
-      </div>
-
-      <div class="field">
-        <label>PHONE NUMBER *</label>
-        <input id="orderPhone" required type="tel" placeholder="03XX XXXXXXX">
-      </div>
-
-      <div class="field">
-        <label>ADDRESS *</label>
-        <input id="orderAddress" required placeholder="Complete address">
-      </div>
-
-      <div class="field">
-        <label>HOUSE / NEAR PLACE *</label>
-        <input id="nearPlace" required placeholder="House number / nearby place">
-      </div>
-
-      <div class="field">
-        <label>CITY *</label>
-        <input id="orderCity" required placeholder="Your city">
-      </div>
-
-      <div class="delivery-note" id="deliveryNote">
-        <div class="summary-row"><span>Subtotal</span><b id="orderSubtotal">Rs. 0</b></div>
-        <div class="summary-row"><span>Delivery Charges</span><b>Rs. 250</b></div>
-        <div class="summary-total"><span>Total</span><b id="orderTotal">Rs. 250</b></div>
-      </div>
-
-      <button type="submit" class="submit">PLACE ORDER — CASH ON DELIVERY</button>
-    </form>
-  </div>
+ <div class="formbox">
+  <span class="close" onclick="closeForm()">×</span>
+  <h2>Complete Your Order</h2>
+  <p>Cash on Delivery — Please enter your details.</p>
+  <form id="orderForm" onsubmit="submitOrder(event)">
+   <div class="field"><label>Deal *</label><select id="deal"><option value="Pack of 1" data-price="999">Pack of 1 — Rs. 999</option><option value="Pack of 2" data-price="1499">Pack of 2 — Rs. 1,499</option></select></div>
+   <div class="field"><label>Full Name *</label><input id="name" required placeholder="Your name"></div>
+   <div class="field"><label>Phone Number *</label><input id="phone" required type="tel" placeholder="03XX XXXXXXX"></div>
+   <div class="field"><label>House / Near Place *</label><input id="nearPlace" required placeholder="House no. / landmark"></div>
+   <div class="field"><label>City *</label><input id="city" required placeholder="Your city"></div>
+   <div class="field"><label>Complete Address *</label><textarea id="address" required rows="3" placeholder="House, street, area"></textarea></div>
+   <div class="field"><label>Subtotal</label><input id="subtotal" readonly value="999"></div>
+   <div class="field"><label>Delivery Charges</label><input id="delivery" readonly value="250"></div>
+   <div class="field"><label>Total</label><input id="total" readonly value="1249"></div>
+   
+   <button class="submit" id="submitBtn">PLACE ORDER — CASH ON DELIVERY</button>
+  </form>
+ </div>
 </div>
-<script>
-function swap(src){
-  const main=document.getElementById('mainImage');
-  if(main) main.src=src;
-}
-function openForm(){
-  const modal=document.getElementById('modal');
-  if(modal) modal.classList.add('show');
-}
-function closeForm(){
-  const modal=document.getElementById('modal');
-  if(modal) modal.classList.remove('show');
-}
-function add(){
-  openForm();
-}
-function updateOrderTotal(){
-  const deal=document.getElementById('deal');
-  const subtotal=document.getElementById('orderSubtotal');
-  const total=document.getElementById('orderTotal');
-  if(!deal || !subtotal || !total) return;
-  let price=0;
-  if(deal.value.includes('999')) price=999;
-  else if(deal.value.includes('1499')) price=1499;
-  subtotal.textContent='Rs. '+price.toLocaleString();
-  total.textContent='Rs. '+(price+250).toLocaleString();
-}
-function submitOrder(e){
-  e.preventDefault();
-
-  const ids=['deal','orderName','orderPhone','orderAddress','nearPlace','orderCity'];
-  for(const id of ids){
-    const el=document.getElementById(id);
-    if(!el || !el.value.trim()){
-      alert('Please complete all required fields.');
-      if(el) el.focus();
-      return false;
-    }
-  }
-
-  closeForm();
-
-  const processing=document.getElementById('processingScreen');
-  const thankyou=document.getElementById('thankyouScreen');
-
-  processing.classList.add('show');
-
-  setTimeout(function(){
-    processing.classList.remove('show');
-    thankyou.classList.add('show');
-  },2000);
-
-  return false;
-}
-document.addEventListener('DOMContentLoaded',function(){
-  document.querySelectorAll('.thumb').forEach(function(img){
-    img.addEventListener('click',function(){swap(this.src);});
-  });
-  const deal=document.getElementById('deal');
-  if(deal){
-    deal.addEventListener('change',updateOrderTotal);
-    updateOrderTotal();
-  }
-  const modal=document.getElementById('modal');
-  if(modal){
-    modal.addEventListener('click',function(e){
-      if(e.target===modal) closeForm();
-    });
-  }
-});
-</script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const stock = document.getElementById('stockNumber');
-  if (!stock) return;
-  const numbers = [20, 17, 15, 13, 10];
-  let i = 0;
-  setInterval(function () {
-    i = (i + 1) % numbers.length;
-    stock.textContent = numbers[i];
-  }, 2000);
-});
+const APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbym4F1ehoC24-JTzC1U0iIShPgWwRhW3WHOpeA5isCggpWqVQeme1QiwxkuRckFhpvY-g/exec";
+function swap(src){document.getElementById('mainImage').src=src}
+document.querySelectorAll('.pack').forEach(x=>x.onclick=()=>{document.querySelectorAll('.pack').forEach(y=>y.classList.remove('active'));x.classList.add('active')});
+function openForm(){document.getElementById('modal').classList.add('show')}
+function closeForm(){document.getElementById('modal').classList.remove('show')}
+const deal=document.getElementById('deal');
+if(deal)deal.addEventListener('change',()=>{let p=Number(deal.options[deal.selectedIndex].dataset.price);document.getElementById('subtotal').value=p;document.getElementById('total').value=p+250});
+async function submitOrder(e){e.preventDefault();const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='PROCESSING ORDER...';const payload={deal:deal.value,name:name.value.trim(),phone:phone.value.trim(),address:address.value.trim(),nearPlace:nearPlace.value.trim(),city:city.value.trim(),subtotal:subtotal.value,delivery:delivery.value,total:total.value};try{await fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});closeForm();document.body.innerHTML='<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f7fbfb;font-family:Arial"><div style="background:#fff;padding:42px 28px;border-radius:18px;box-shadow:0 10px 35px rgba(0,0,0,.10);text-align:center;max-width:430px;width:90%"><div style="font-size:52px">✓</div><div style="display:inline-block;background:#e8f8f4;color:#078b79;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:800;margin:10px 0">ORDER CONFIRMED</div><h1 style="color:#15385c">Thank You for Your Order!</h1><p style="color:#617080;line-height:1.6">Your Cash on Delivery order has been received successfully.</p><div style="text-align:left;background:#f7faf9;padding:16px;border-radius:10px;margin:20px 0"><b>Payment Method:</b> Cash on Delivery<br><b>Order Status:</b> Confirmed<br><b>Total:</b> Rs. '+payload.total+'</div><p style="color:#617080;font-size:13px">Our team will contact you shortly to confirm your order.</p></div></div>';}catch(err){btn.disabled=false;btn.textContent='PLACE ORDER — CASH ON DELIVERY';alert('Order submit nahi ho saka. Dobara try karein.')}}
 </script>
-
 </body>
 </html>
