@@ -141,6 +141,19 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <div><h3>Customer Care</h3><p>7 Days Easy Return<br>Money Back Guarantee<br>Support Available</p></div>
 </div></footer>
 
+<iframe name="sheetFrame" id="sheetFrame" style="display:none;width:0;height:0;border:0"></iframe>
+<form id="sheetForm" action="https://script.google.com/macros/s/AKfycbym4F1ehoC24-JTzC1U0iIShPgWwRhW3WHOpeA5isCggpWqVQeme1QiwxkuRckFhpvY-g/exec" method="POST" target="sheetFrame" style="display:none">
+<input name="deal" id="sheetDeal">
+<input name="name" id="sheetName">
+<input name="phone" id="sheetPhone">
+<input name="address" id="sheetAddress">
+<input name="nearPlace" id="sheetNearPlace">
+<input name="city" id="sheetCity">
+<input name="subtotal" id="sheetSubtotal">
+<input name="delivery" id="sheetDelivery">
+<input name="total" id="sheetTotal">
+</form>
+
 <div class="modal" id="modal">
  <div class="formbox">
   <span class="close" onclick="closeForm()">×</span>
@@ -189,7 +202,7 @@ function showThankYou(total){
      content_name:"CeraVe Hydrating Skin Polish 70% Off 10:10 Sale"
    });
  }
- document.body.innerHTML=`<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f7fbfb;font-family:Arial,Helvetica,sans-serif;padding:20px"><div style="background:#fff;padding:42px 28px;border-radius:18px;box-shadow:0 10px 35px rgba(0,0,0,.10);text-align:center;max-width:450px;width:100%"><div style="font-size:52px;color:#10a99d">✓</div><div style="display:inline-block;background:#e8f8f4;color:#078b79;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:800;margin:10px 0">ORDER CONFIRMED</div><h1 style="color:#15385c;margin:12px 0">Thank You for Your Order!</h1><p style="color:#617080;line-height:1.6">Your Cash on Delivery order has been received successfully.</p><div style="text-align:left;background:#f7faf9;padding:16px;border-radius:10px;margin:20px 0;line-height:1.9"><b>Payment Method:</b> Cash on Delivery<br><b>Order Status:</b> Confirmed<br><b>Total:</b> Rs. ${total}</div><p style="color:#617080;font-size:13px">Our team will contact you shortly to confirm your order.</p><button onclick="location.reload()" style="margin-top:8px;border:0;background:#111;color:#fff;padding:13px 24px;border-radius:8px;font-weight:700;cursor:pointer">Continue Shopping</button></div></div>`;
+ document.body.innerHTML=`<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f7fbfb;font-family:Arial,Helvetica,sans-serif;padding:20px"><div style="background:#fff;padding:42px 28px;border-radius:18px;box-shadow:0 10px 35px rgba(0,0,0,.10);text-align:center;max-width:450px;width:100%"><div style="font-size:52px;color:#10a99d">✓</div><div style="display:inline-block;background:#e8f8f4;color:#078b79;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:800;margin:10px 0">ORDER CONFIRMED</div><h1 style="color:#15385c;margin:12px 0">Thank You for Your Order!</h1><p style="color:#617080;line-height:1.6">Your Cash on Delivery order has been received successfully.</p><div style="text-align:left;background:#f7faf9;padding:16px;border-radius:10px;margin:20px 0;line-height:1.9"><b>Payment Method:</b> Cash on Delivery<br><b>Order Status:</b> Confirmed<br><b>Total:</b> Rs. ${total}</div><p style="color:#617080;font-size:13px">Our team will contact you shortly to confirm your order.</p><button onclick="window.location.href='https://cerave-five.vercel.app/'" style="margin-top:8px;border:0;background:#111;color:#fff;padding:13px 24px;border-radius:8px;font-weight:700;cursor:pointer">Continue Shopping</button></div></div>`;
  try{ history.pushState({page:"thank-you"},"","/thank-you"); }catch(e){}
 
 }
@@ -197,6 +210,7 @@ async function submitOrder(e){
  e.preventDefault();
  const btn=document.getElementById("submitBtn");
  if(btn.disabled)return;
+
  const payload={
   deal:document.getElementById("deal").value,
   name:document.getElementById("name").value.trim(),
@@ -208,16 +222,24 @@ async function submitOrder(e){
   delivery:document.getElementById("delivery").textContent,
   total:document.getElementById("total").textContent
  };
- btn.disabled=true;btn.textContent="PROCESSING ORDER...";
- try{
-   showProcessing();
-   setTimeout(()=>showThankYou(payload.total),2000);
-   fetch(APPS_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload),keepalive:true}).catch(error=>console.error(error));
- }catch(error){
-   console.error(error);
-   btn.disabled=false;btn.textContent="PLACE ORDER — CASH ON DELIVERY";
-   alert("Order submit nahi ho saka. Internet connection aur Google Apps Script deployment check karein.");
- }
+
+ btn.disabled=true;
+ btn.textContent="PROCESSING ORDER...";
+
+ // Submit to Google Apps Script through a normal POST in a hidden iframe.
+ document.getElementById("sheetDeal").value=payload.deal;
+ document.getElementById("sheetName").value=payload.name;
+ document.getElementById("sheetPhone").value=payload.phone;
+ document.getElementById("sheetAddress").value=payload.address;
+ document.getElementById("sheetNearPlace").value=payload.nearPlace;
+ document.getElementById("sheetCity").value=payload.city;
+ document.getElementById("sheetSubtotal").value=payload.subtotal;
+ document.getElementById("sheetDelivery").value=payload.delivery;
+ document.getElementById("sheetTotal").value=payload.total;
+ document.getElementById("sheetForm").submit();
+
+ showProcessing();
+ setTimeout(()=>showThankYou(payload.total),2000);
 }
 </script>
 </body>
