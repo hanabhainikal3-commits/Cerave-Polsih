@@ -172,7 +172,20 @@ function closeForm(){document.getElementById("modal").classList.remove("show")}
 const dealEl=document.getElementById("deal"),subtotalEl=document.getElementById("subtotal"),deliveryEl=document.getElementById("delivery"),totalEl=document.getElementById("total");
 if(dealEl)dealEl.addEventListener("change",()=>{const price=Number(dealEl.options[dealEl.selectedIndex].dataset.price||999);subtotalEl.textContent=price;totalEl.textContent=price+Number(deliveryEl.textContent||250)});
 function showProcessing(){document.body.innerHTML=`<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f7fbfb;font-family:Arial"><div style="background:#fff;padding:42px 30px;border-radius:18px;text-align:center;box-shadow:0 12px 40px #0002"><div style="font-size:42px">⏳</div><h2>Processing Your Order...</h2><p>Please wait while we confirm your order.</p></div></div>`}
-function showThankYou(total){if(window.ttq&&typeof window.ttq.track==="function")ttq.track("Purchase",{value:Number(total)||0,currency:"PKR",content_type:"product",content_name:"CeraVe Hydrating Skin Polish 70% Off 10:10 Sale"});document.body.innerHTML=`<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f7fbfb;font-family:Arial;padding:20px"><div style="background:#fff;padding:42px 28px;border-radius:18px;text-align:center;max-width:450px;width:100%;box-shadow:0 10px 35px #0002"><div style="font-size:52px;color:#10a99d">✓</div><b style="color:#078b79">ORDER CONFIRMED</b><h1>Thank You for Your Order!</h1><p>Your Cash on Delivery order has been received successfully.</p><p><b>Total: Rs. ${total}</b></p><button onclick="location.href='/'" style="border:0;background:#111;color:#fff;padding:13px 24px;border-radius:8px">Continue Shopping</button></div></div>`;try{history.pushState({},"","/thank-you")}catch(e){}}
+function showThankYou(total){
+  // TikTok Purchase must fire only once per successful order.
+  if(!window.__purchaseTracked){
+    window.__purchaseTracked=true;
+    if(window.ttq&&typeof window.ttq.track==="function"){
+      ttq.track("Purchase",{
+        value:Number(total)||0,
+        currency:"PKR",
+        content_type:"product",
+        content_name:"CeraVe Hydrating Skin Polish 70% Off 10:10 Sale"
+      });
+    }
+  }
+  document.body.innerHTML=`<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f7fbfb;font-family:Arial;padding:20px"><div style="background:#fff;padding:42px 28px;border-radius:18px;text-align:center;max-width:450px;width:100%;box-shadow:0 10px 35px #0002"><div style="font-size:52px;color:#10a99d">✓</div><b style="color:#078b79">ORDER CONFIRMED</b><h1>Thank You for Your Order!</h1><p>Your Cash on Delivery order has been received successfully.</p><p><b>Total: Rs. ${total}</b></p><button onclick="location.href='/'" style="border:0;background:#111;color:#fff;padding:13px 24px;border-radius:8px">Continue Shopping</button></div></div>`;try{history.pushState({},"","/thank-you")}catch(e){}}
 async function submitOrder(e){
   e.preventDefault();
   const btn=document.getElementById("submitBtn");
@@ -192,6 +205,10 @@ async function submitOrder(e){
 
   btn.disabled=true;
   btn.textContent="PROCESSING ORDER...";
+
+  // Show Processing screen immediately after Place Order is clicked.
+  // The order is then submitted in the background.
+  showProcessing();
 
   // Send directly to Google Apps Script. no-cors is intentional because
   // Apps Script does not need to return data to the browser for this order.
@@ -231,7 +248,8 @@ async function submitOrder(e){
     f.submit();
   }
 
-  showProcessing();
+  // Processing screen stays visible for exactly 2 seconds,
+  // then the Thank You page is shown.
   setTimeout(()=>showThankYou(payload.total),2000);
 }
 </script>
