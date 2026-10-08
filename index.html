@@ -173,8 +173,67 @@ const dealEl=document.getElementById("deal"),subtotalEl=document.getElementById(
 if(dealEl)dealEl.addEventListener("change",()=>{const price=Number(dealEl.options[dealEl.selectedIndex].dataset.price||999);subtotalEl.textContent=price;totalEl.textContent=price+Number(deliveryEl.textContent||250)});
 function showProcessing(){document.body.innerHTML=`<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f7fbfb;font-family:Arial"><div style="background:#fff;padding:42px 30px;border-radius:18px;text-align:center;box-shadow:0 12px 40px #0002"><div style="font-size:42px">⏳</div><h2>Processing Your Order...</h2><p>Please wait while we confirm your order.</p></div></div>`}
 function showThankYou(total){if(window.ttq&&typeof window.ttq.track==="function")ttq.track("Purchase",{value:Number(total)||0,currency:"PKR",content_type:"product",content_name:"CeraVe Hydrating Skin Polish 70% Off 10:10 Sale"});document.body.innerHTML=`<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f7fbfb;font-family:Arial;padding:20px"><div style="background:#fff;padding:42px 28px;border-radius:18px;text-align:center;max-width:450px;width:100%;box-shadow:0 10px 35px #0002"><div style="font-size:52px;color:#10a99d">✓</div><b style="color:#078b79">ORDER CONFIRMED</b><h1>Thank You for Your Order!</h1><p>Your Cash on Delivery order has been received successfully.</p><p><b>Total: Rs. ${total}</b></p><button onclick="location.href='/'" style="border:0;background:#111;color:#fff;padding:13px 24px;border-radius:8px">Continue Shopping</button></div></div>`;try{history.pushState({},"","/thank-you")}catch(e){}}
-function submitOrder(e){e.preventDefault();const btn=document.getElementById("submitBtn");if(btn.disabled)return;const payload={deal:dealEl.value,name:document.getElementById("name").value.trim(),phone:document.getElementById("phone").value.trim(),address:document.getElementById("address").value.trim(),nearPlace:document.getElementById("nearPlace").value.trim(),city:document.getElementById("city").value.trim(),subtotal:subtotalEl.textContent,delivery:deliveryEl.textContent,total:totalEl.textContent};btn.disabled=true;btn.textContent="PROCESSING ORDER...";
-const f=document.createElement("form");f.method="POST";f.action=APPS_SCRIPT_URL;f.target="sheetSubmitFrame";f.style.display="none";Object.entries(payload).forEach(([k,v])=>{const i=document.createElement("input");i.name=k;i.value=v;f.appendChild(i)});let frame=document.getElementById("sheetSubmitFrame");if(!frame){frame=document.createElement("iframe");frame.name="sheetSubmitFrame";frame.id="sheetSubmitFrame";frame.style.display="none";document.body.appendChild(frame)}document.body.appendChild(f);f.submit();showProcessing();setTimeout(()=>showThankYou(payload.total),2000);}
+async function submitOrder(e){
+  e.preventDefault();
+  const btn=document.getElementById("submitBtn");
+  if(btn.disabled)return;
+
+  const payload={
+    deal:dealEl.value,
+    name:document.getElementById("name").value.trim(),
+    phone:document.getElementById("phone").value.trim(),
+    address:document.getElementById("address").value.trim(),
+    nearPlace:document.getElementById("nearPlace").value.trim(),
+    city:document.getElementById("city").value.trim(),
+    subtotal:subtotalEl.textContent,
+    delivery:deliveryEl.textContent,
+    total:totalEl.textContent
+  };
+
+  btn.disabled=true;
+  btn.textContent="PROCESSING ORDER...";
+
+  // Send directly to Google Apps Script. no-cors is intentional because
+  // Apps Script does not need to return data to the browser for this order.
+  const body=new URLSearchParams(payload).toString();
+
+  try{
+    await fetch(APPS_SCRIPT_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},
+      body:body,
+      keepalive:true
+    });
+  }catch(err){
+    // Fallback: regular HTML form POST in case fetch is blocked.
+    const f=document.createElement("form");
+    f.method="POST";
+    f.action=APPS_SCRIPT_URL;
+    f.target="sheetSubmitFrame";
+    f.style.display="none";
+    Object.entries(payload).forEach(([k,v])=>{
+      const i=document.createElement("input");
+      i.type="hidden";
+      i.name=k;
+      i.value=v;
+      f.appendChild(i);
+    });
+    let frame=document.getElementById("sheetSubmitFrame");
+    if(!frame){
+      frame=document.createElement("iframe");
+      frame.name="sheetSubmitFrame";
+      frame.id="sheetSubmitFrame";
+      frame.style.display="none";
+      document.body.appendChild(frame);
+    }
+    document.body.appendChild(f);
+    f.submit();
+  }
+
+  showProcessing();
+  setTimeout(()=>showThankYou(payload.total),2000);
+}
 </script>
 </body>
 </html>
